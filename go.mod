@@ -3,7 +3,7 @@ module github.com/yanzongzhen/utils
 go 1.13
 
 require (
-	git.icity.cn/Fan/DataFormatUtils.git v1.1.3
+	git.icity.cn/Fan/DataFormatUtils v1.0.0
 	github.com/yanzongzhen/Logger v1.0.0
 	github.com/google/uuid v1.1.1
 	github.com/hashicorp/consul/api v1.4.0
