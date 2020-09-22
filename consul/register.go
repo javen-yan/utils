@@ -63,6 +63,9 @@ func (c *Consul) ServiceRegister() (string, error) {
 		check.GRPC = fmt.Sprintf("%s:%d%s", registration.Address, c.Options.HealthPort, c.Options.HealthMethod)
 	} else if c.Options.Type == "http" {
 		check.HTTP = fmt.Sprintf("http://%s:%d%s", registration.Address, registration.Port, c.Options.HealthMethod)
+	} else if c.Options.Type == "https" {
+		check.TLSSkipVerify = true
+		check.HTTP = fmt.Sprintf("https://%s:%d%s", registration.Address, registration.Port, c.Options.HealthMethod)
 	} else {
 		return "", errors.New("service type not favor")
 	}
