@@ -19,6 +19,7 @@ type Options struct {
 	HealthMethod string
 	ServiceName  string
 	Type         string
+	Tags         []string
 }
 
 func NewConsul(Options Options, config ...api.Config) (c *Consul, err error) {
@@ -55,7 +56,7 @@ func (c *Consul) ServiceRegister() (string, error) {
 	registration.ID = serviceID
 	registration.Name = c.Options.ServiceName
 	registration.Port = c.Options.ServicePort
-	registration.Tags = nil
+	registration.Tags = c.Options.Tags
 	registration.Address = ip
 	//增加check。
 	check := new(api.AgentServiceCheck)
